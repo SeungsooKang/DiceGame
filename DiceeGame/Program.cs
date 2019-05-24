@@ -10,9 +10,30 @@ namespace DiceeGame
     {
         static void Main(string[] args)
         {
-            Dice d1 = new Dice();
-            d1.Roll();
-            Console.WriteLine(d1.Face);
+            DiceGame diceGame = new DiceGame(2);
+
+            Player p1 = new Player();
+            Player p2 = new Player();
+            Player p3 = new Player();
+            Player p4 = new Player();
+
+            p1.Name = "John";
+            p2.Name = "Peter";
+            p3.Name = "Mike";
+            p4.Name = "Cathy";
+
+            diceGame.AddPlayer(p1);
+            diceGame.AddPlayer(p2);
+            diceGame.AddPlayer(p3);
+            diceGame.AddPlayer(p4);
+
+            diceGame.Start();
+
+            Console.WriteLine(diceGame.ActivePlayer.Name);
+            diceGame.SetNextPlayer();
+
+           
+
         }
     }
 }

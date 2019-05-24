@@ -32,6 +32,7 @@ namespace DiceeGame
 
         public DiceGame(int numberOfDice)
         {
+            _isGameOver = false;
             Players = new List<Player>();
             Dices = new List<Dice>();
 
@@ -63,39 +64,69 @@ namespace DiceeGame
 
         public void PlayTurn()
         {
-            foreach (var dice in Dices)
-            {
-                dice.Roll();
-            }
-
-
-
+            RollDice();
+            UpdatePlayerStat();
+            SetNextPlayer();
+            checkGameOver();
         }
 
         public void RollDice()
         {
-
+            foreach (var dice in Dices)
+            {
+                dice.Roll();
+            }
         }
 
-        public void ComputeTurnResult()
+        public RollResult ComputeTurnResult()
         {
-
+            RollResult rollResult = RollResult.Lose;
+            if (Dices.All(dice => dice.Face == Dices[0].Face))
+                rollResult = Dices[0].Face == Dices[0].Max ? RollResult.Jackpot : RollResult.Win;
+            return rollResult;
         }
 
         public void UpdatePlayerStat()
         {
+            RollResult rollResult = ComputeTurnResult();
+            _activePlayer.History.Add(rollResult);
 
+            switch (rollResult)
+            {
+                case RollResult.Jackpot:
+                    _activePlayer.Score += Dices.Count * Dices[0].Max * 10;
+                    break;
+                case RollResult.Win:
+                    _activePlayer.Score += Dices.Count * Dices[0].Face * 10;
+                    break;
+                case RollResult.Lose:
+                    _activePlayer.Score += 0;
+                    break;
+            }
         }
 
         public void SetNextPlayer()
         {
-
+            _activePlayer = Players[(Players.IndexOf(_activePlayer) + 1) % Players.Count];
         }
 
         public Player TheWinner()
         {
+            int maxScore = Players[0].Score;
+            for (int i = 1; i < Players.Count; i++)
+                maxScore = Math.Max(maxScore, Players[i].Score);
 
-            return new Player();
+            List<Player> maxPlayers = Players.FindAll(player => player.Score == maxScore);
+            return maxPlayers.Count > 1 ? null : maxPlayers[0];
+        }
+
+        public void checkGameOver()
+        {
+            if (Players.Any(player => (player.History.FindAll(o => o == RollResult.Jackpot)).Count == 2)
+                || Players.All(player => player.History.Count == 6))
+            {
+                _isGameOver = true;
+            }
         }
 
     }
