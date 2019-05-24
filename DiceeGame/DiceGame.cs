@@ -67,7 +67,7 @@ namespace DiceeGame
             RollDice();
             UpdatePlayerStat();
             SetNextPlayer();
-            checkGameOver();
+            CheckGameOver();
         }
 
         public void RollDice()
@@ -120,7 +120,7 @@ namespace DiceeGame
             return maxPlayers.Count > 1 ? null : maxPlayers[0];
         }
 
-        public void checkGameOver()
+        public void CheckGameOver()
         {
             if (Players.Any(player => (player.History.FindAll(o => o == RollResult.Jackpot)).Count == 2)
                 || Players.All(player => player.History.Count == 6))

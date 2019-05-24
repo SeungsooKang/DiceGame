@@ -28,8 +28,7 @@ namespace DiceeGame
 
         public void Roll()
         {
-            Random rnd = new Random();
-            _face = rnd.Next(1, _max + 1);
+            _face = Program.RandomGen.Next(1, _max + 1);
         }
 
     }
