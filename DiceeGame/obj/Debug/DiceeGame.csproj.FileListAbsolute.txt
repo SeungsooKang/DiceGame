@@ -1,0 +1,7 @@
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\bin\Debug\DiceeGame.exe.config
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\bin\Debug\DiceeGame.exe
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\bin\Debug\DiceeGame.pdb
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\obj\Debug\DiceeGame.csprojAssemblyReference.cache
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\obj\Debug\DiceeGame.csproj.CoreCompileInputs.cache
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\obj\Debug\DiceeGame.exe
+C:\Users\kang\source\repos\DiceeGame\DiceeGame\obj\Debug\DiceeGame.pdb
