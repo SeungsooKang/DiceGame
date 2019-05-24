@@ -31,7 +31,6 @@ namespace DiceeGame
             }
 
             PrintOutGameResult(diceGame);
-
         }
 
         public static int GetNumberOfPlayers()

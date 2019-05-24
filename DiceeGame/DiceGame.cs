@@ -45,9 +45,7 @@ namespace DiceeGame
         public void AddPlayer(Player player)
         {
             if (_activePlayer != null)
-            {
                 throw new Exception("The game is started. You cannot add a new player.");
-            }
             //Once the game starts, it’s not allowed to add new players.
             //Throw an exception from this method if the UI program tries to do such operation.
             Players.Add(player);
