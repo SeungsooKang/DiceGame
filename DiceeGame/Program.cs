@@ -20,18 +20,17 @@ namespace DiceeGame
             AddPlayersToGame(diceGame, numOfPlayers);
 
             diceGame.Start();
+            Console.WriteLine("\n------- Game Start! -------");
             while (!diceGame.IsGameOver)
             {
-                Console.WriteLine($"\n{diceGame.ActivePlayer.Name}"); 
                 diceGame.PlayTurn();
+                Console.WriteLine($"\n{diceGame.ActivePlayer.Name}");
                 ShowDiceResult(diceGame.Dices);
                 Console.WriteLine($"  Score: {diceGame.ActivePlayer.Score}");
+                // Include (System.Readline()) so the user can see the result.
             }
 
-
-
-
-
+            PrintOutGameResult(diceGame);
 
         }
 
@@ -68,6 +67,24 @@ namespace DiceeGame
             {
                 Console.WriteLine($"  Dice({i + 1}): {dices[i].Face}");
             }
+        }
+
+        public static void PrintOutGameResult(DiceGame diceGame)
+        {
+            Player winner = diceGame.TheWinner();
+            Console.WriteLine("\n------- Game End. -------\n");
+
+            if (winner == null)
+                Console.WriteLine("\nThere is no Winner.\n");
+            else
+            {
+                Console.WriteLine($"The Winner is {winner.Name}.\n");
+                for (int i = 0; i < winner.History.Count; i++)
+                {
+                    Console.WriteLine($"  Round({i + 1}) : {winner.History[i]}");
+                }
+            }
+            Console.WriteLine("\n");
         }
     }
 }

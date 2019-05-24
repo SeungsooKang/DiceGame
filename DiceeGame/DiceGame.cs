@@ -59,14 +59,13 @@ namespace DiceeGame
                 throw new Exception("There should be at least two players.");
             // Update a game state to mention that the game has started (so AddPlayer can’t
             // be called anymore).
-            _activePlayer = Players[0];
         }
 
         public void PlayTurn()
         {
+            SetNextPlayer();
             RollDice();
             UpdatePlayerStat();
-            SetNextPlayer();
             CheckGameOver();
         }
 
@@ -94,10 +93,10 @@ namespace DiceeGame
             switch (rollResult)
             {
                 case RollResult.Jackpot:
-                    _activePlayer.Score += Dices.Count * Dices[0].Max * 10;
+                    _activePlayer.Score += (Dices.Count * Dices[0].Max * 10);
                     break;
                 case RollResult.Win:
-                    _activePlayer.Score += Dices.Count * Dices[0].Face * 10;
+                    _activePlayer.Score += (Dices.Count * Dices[0].Face * 5);
                     break;
                 case RollResult.Lose:
                     _activePlayer.Score += 0;
@@ -107,7 +106,7 @@ namespace DiceeGame
 
         public void SetNextPlayer()
         {
-            _activePlayer = Players[(Players.IndexOf(_activePlayer) + 1) % Players.Count];
+            _activePlayer = _activePlayer == null ? Players[0] : Players[(Players.IndexOf(_activePlayer) + 1) % Players.Count];
         }
 
         public Player TheWinner()
