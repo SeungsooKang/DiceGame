@@ -15,5 +15,66 @@ namespace DiceeGame
 
     class DiceGame
     {
+        public List<Dice> Dice { get; set; }
+        public List<Player> Players { get; set; }
+
+        private Player _activePlayer;
+        public Player ActivePlayer
+        {
+            get { return _activePlayer; }
+        }
+
+        private bool _isGameOver;
+        public bool IsGameOver
+        {
+            get { return _isGameOver; }
+        }
+
+        public DiceGame(int numberOfDice)
+        {
+
+        }
+
+        public void AddPlayer(Player player)
+        {
+
+        }
+
+        public void Start()
+        {
+
+        }
+
+        public void PlayTurn()
+        {
+
+        }
+
+        public void RollDice()
+        {
+
+        }
+
+        public void ComputeTurnResult()
+        {
+
+        }
+
+        public void UpdatePlayerStat()
+        {
+
+        }
+
+        public void SetNextPlayer()
+        {
+
+        }
+
+        public Player TheWinner()
+        {
+
+            return new Player();
+        }
+
     }
 }
