@@ -10,6 +10,9 @@ namespace DiceeGame
     {
         static void Main(string[] args)
         {
+            Dice d1 = new Dice();
+            d1.Roll();
+            Console.WriteLine(d1.Face);
         }
     }
 }
