@@ -15,7 +15,7 @@ namespace DiceeGame
 
     class DiceGame
     {
-        public List<Dice> Dice { get; set; }
+        public List<Dice> Dices { get; set; }
         public List<Player> Players { get; set; }
 
         private Player _activePlayer;
@@ -32,21 +32,43 @@ namespace DiceeGame
 
         public DiceGame(int numberOfDice)
         {
+            Players = new List<Player>();
+            Dices = new List<Dice>();
 
+            for (int i = 0; i < numberOfDice; i++)
+            {
+                Dices.Add(new Dice());
+            }
         }
 
         public void AddPlayer(Player player)
         {
-
+            if (_activePlayer != null)
+            {
+                throw new Exception("The game is started. You cannot add a new player.");
+            }
+            //Once the game starts, it’s not allowed to add new players.
+            //Throw an exception from this method if the UI program tries to do such operation.
+            Players.Add(player);
         }
 
         public void Start()
         {
-
+            if (Players.Count<2)
+                throw new Exception("There should be at least two players.");
+            // Update a game state to mention that the game has started (so AddPlayer can’t
+            // be called anymore).
+            _activePlayer = Players[0];
         }
 
         public void PlayTurn()
         {
+            foreach (var dice in Dices)
+            {
+                dice.Roll();
+            }
+
+
 
         }
 
