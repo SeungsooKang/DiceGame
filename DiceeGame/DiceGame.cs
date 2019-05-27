@@ -92,12 +92,15 @@ namespace DiceeGame
             {
                 case RollResult.Jackpot:
                     _activePlayer.Score += (Dices.Count * Dices[0].Max * 10);
+                    _activePlayer.ThisTurnScore = Dices.Count * Dices[0].Max * 10;
                     break;
                 case RollResult.Win:
                     _activePlayer.Score += (Dices.Count * Dices[0].Face * 5);
+                    _activePlayer.ThisTurnScore = Dices.Count * Dices[0].Face * 5;
                     break;
                 case RollResult.Lose:
                     _activePlayer.Score += 0;
+                    _activePlayer.ThisTurnScore = 0;
                     break;
             }
         }

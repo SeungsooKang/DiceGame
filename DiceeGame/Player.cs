@@ -10,6 +10,7 @@ namespace DiceeGame
     {
         public string Name { get; set; }
         public int Score { get; set; }
+        public int ThisTurnScore { get; set; }
         public List<RollResult> History { get; set; }
 
         public Player()

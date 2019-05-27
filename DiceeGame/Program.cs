@@ -24,9 +24,9 @@ namespace DiceeGame
             while (!diceGame.IsGameOver)
             {
                 diceGame.PlayTurn();
-                Console.WriteLine($"\n{diceGame.ActivePlayer.Name}");
+                Console.WriteLine($"{diceGame.ActivePlayer.Name}");
                 ShowDiceResult(diceGame.Dices);
-                Console.WriteLine($"  Score: {diceGame.ActivePlayer.Score}");
+                Console.WriteLine($"  Score: {diceGame.ActivePlayer.ThisTurnScore}\tTotal Score: {diceGame.ActivePlayer.Score}");
                 Console.ReadLine();
             }
 
