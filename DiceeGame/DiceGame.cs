@@ -30,6 +30,8 @@ namespace DiceeGame
             get { return _isGameOver; }
         }
 
+        private string _gameStat = "";
+
         public DiceGame(int numberOfDice)
         {
             _isGameOver = false;
@@ -44,10 +46,10 @@ namespace DiceeGame
 
         public void AddPlayer(Player player)
         {
-            if (_activePlayer != null)
+            //if (_activePlayer != null)
+            //    throw new Exception("The game is started. You cannot add a new player.");
+            if (_gameStat.Equals("started"))
                 throw new Exception("The game is started. You cannot add a new player.");
-            //Once the game starts, it’s not allowed to add new players.
-            //Throw an exception from this method if the UI program tries to do such operation.
             Players.Add(player);
         }
 
@@ -55,8 +57,7 @@ namespace DiceeGame
         {
             if (Players.Count<2)
                 throw new Exception("There should be at least two players.");
-            // Update a game state to mention that the game has started (so AddPlayer can’t
-            // be called anymore).
+            _gameStat = "started";
         }
 
         public void PlayTurn()
