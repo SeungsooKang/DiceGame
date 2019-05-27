@@ -27,7 +27,7 @@ namespace DiceeGame
                 Console.WriteLine($"\n{diceGame.ActivePlayer.Name}");
                 ShowDiceResult(diceGame.Dices);
                 Console.WriteLine($"  Score: {diceGame.ActivePlayer.Score}");
-                // Include (System.Readline()) so the user can see the result.
+                Console.ReadLine();
             }
 
             PrintOutGameResult(diceGame);
